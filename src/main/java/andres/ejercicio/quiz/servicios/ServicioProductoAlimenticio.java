@@ -20,7 +20,33 @@ public class ServicioProductoAlimenticio implements OperacionesProductoAlimentic
     }
 
     @Override
+    public ProductoAlimenticio modificar(ProductoAlimenticio productoAlimenticio) {
+
+        if(this.buscarPorPk(productoAlimenticio.getCodigo()) != null ){
+            return repositorioProductoAlimenticio.save(productoAlimenticio);
+        }else {
+            return null;
+        }
+
+    }
+
+    @Override
+    public void eliminar(ProductoAlimenticio productoAlimenticio) {
+        repositorioProductoAlimenticio.delete(productoAlimenticio);
+    }
+
+    @Override
+    public void eliminar(int serial) {
+        repositorioProductoAlimenticio.deleteById(serial);
+    }
+
+    @Override
     public List<ProductoAlimenticio> buscarTodos() {
         return repositorioProductoAlimenticio.findAll();
+    }
+
+    @Override
+    public ProductoAlimenticio buscarPorPk(int pkEntidad) {
+        return repositorioProductoAlimenticio.findById(pkEntidad).orElse(null);
     }
 }

@@ -46,14 +46,14 @@
 
         <br><br>
 
-        <div class="h col-6 offset-md-3"  style="border: 4px solid #000000; background-color: rgb(185, 202, 183);" >
+        <div class="h col-6 offset-md-3"  style="border: 4px solid #000000; background-color: rgb(212, 177, 170);" >
 
             <br>
 
-            <h1 class="text-center" style="color: black">Crear producto alimenticio</h1>
+            <h1 class="text-center" style="color: black">Editar producto alimenticio</h1>
 
             <div class="card-body col-10 offset-md-1">
-                <form th:action="@{/producto}" method="post" th:object="${productoAlimenticio}">
+                <form th:action="@{/productos/{codigo}(codigo=${producto.codigo})}" method="post" th:object="${producto}">
 
                     <div class="form-group">
                         <label class="form-label fs-3 text-dark" for="empresa"> Nombre empresa fabricante </label>
@@ -95,7 +95,7 @@
                     <br><br>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success fs-4 col-4 offset-md-4">Crear</button>
+                        <button type="submit" class="btn btn-success fs-4 col-4 offset-md-4">Modificar</button>
                     </div>
                 </form>
             </div>

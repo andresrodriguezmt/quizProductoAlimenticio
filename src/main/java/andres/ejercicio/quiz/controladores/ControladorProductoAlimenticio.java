@@ -5,9 +5,7 @@ import andres.ejercicio.quiz.servicios.ServicioProductoAlimenticio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ControladorProductoAlimenticio {
@@ -38,6 +36,24 @@ public class ControladorProductoAlimenticio {
         }else{
             return "redirect:/crear/producto";
         }
+    }
+
+    @GetMapping("/modificar/productos/{codigo}")
+    public String mostrarFormularioEditar(@PathVariable int codigo, Model model){
+        model.addAttribute("producto", servicioProductoAlimenticio.buscarPorPk(codigo));
+        return "editar_producto";
+    }
+
+    @PostMapping("/productos/{codigo}")
+    public String modificarEquipo(@ModelAttribute( "equipo") ProductoAlimenticio productoAlimenticio, Model model){
+        model.addAttribute("equipo", servicioProductoAlimenticio.modificar(productoAlimenticio));
+        return "redirect:/principal";
+    }
+
+    @GetMapping("/producto/{codigo}")
+    public String eliminarEquipo(@PathVariable int codigo){
+        servicioProductoAlimenticio.eliminar(codigo);
+        return "redirect:/principal";
     }
 
 }

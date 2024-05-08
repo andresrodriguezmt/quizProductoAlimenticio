@@ -41,7 +41,9 @@
             <th>Categoria</th>
             <th>Nombre</th>
             <th>Precio</th>
-            <th>Pais donde fue fabricado</th>
+            <th>Pais de fabricación</th>
+            <th>Acción 1</th>
+            <th>Acción 2</th>
 
         </tr>
         </thead>
@@ -51,7 +53,15 @@
             <td th:text="${dato.categoria}">Categoria</td>
             <td th:text="${dato.nombre}">Nombre</td>
             <td th:text="${dato.precio}">Precio</td>
-            <td th:text="${dato.pais}">Pais donde fue fabricado</td>
+            <td th:text="${dato.pais}">Pais de fabricación</td>
+            <td>
+                <a th:href="@{/modificar/productos/{codigo}(codigo=${dato.codigo})}" class="btn btn-info">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{/producto/{codigo}(codigo=${dato.codigo})}" class="btn btn-danger">Eliminar</a>
+            </td>
+
+
         </tr>
         <tbody>
         </tbody>
